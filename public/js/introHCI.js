@@ -10,6 +10,7 @@ $(document).ready(function() {
  */
 function initializePage() {
 	$('.project a').click(function(e) {
+
 		// Prevent following the link
 		e.preventDefault();
 
@@ -20,9 +21,11 @@ function initializePage() {
 
 		// this is the URL we'll call
 		var url_call = '/project/'+idNumber;
+		console.log(url_call);
 
 		// How to respond to the GET request
 		function addProjectDetails(project_json) {
+			console.log("here");
 			// We need to compute a display string for the date
 			// Search 'toLocaleDateString' online for more details.
 			var date_obj = new Date(project_json['date']);
@@ -55,9 +58,10 @@ function initializePage() {
 
 		// issue the GET request
 		$.get(url_call, addProjectDetails);
+		console.log("getting");
 	});
 
-	$('#newProjectSubmitButton').click(function(e) {
+	('#newProjectSubmitButton').click(function(e) {
 		console.log('clicked');
 		var title = $('#new-project-form #title').val();
 		var image_url = $('#new-project-form #image_url').val();
