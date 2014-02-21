@@ -14,23 +14,25 @@ exports.projectInfo = function(req, res) { 
 
 exports.addProject = function(req, res) {
   var form_data = req.body;
+  console.log("here");
   console.log(form_data);
-  var newProject = new models.Project({
-    "project":form_data[project_title],
-    "date":form_data[date],
-    "image":form_data[image_url],
-    "summary":form_data[summary]
-  });
+  /*var newProject = new models.Project({
+    "project":form_data['project_title'],
+    "date":form_data['date'],
+    "image":form_data['image_url'],
+    "summary":form_data['summary']
+  });*/
+var newProject = new models.Project(form_data);
   newProject.save(afterSaving);
 
   function afterSaving(err) { // this is a callback
   if(err) {console.log(err); res.send(500); }
-  res.redirect('/');
+  //res.redirect('/');
+   res.send();
 }
 
   // make a new Project and save it to the DB
   // YOU MUST send an OK response w/ res.send();
-  res.send();
 }
 
 exports.deleteProject = function(req, res) {

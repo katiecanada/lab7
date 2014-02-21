@@ -61,15 +61,15 @@ function initializePage() {
 		console.log("getting");
 	});
 
-	('#newProjectSubmitButton').click(function(e) {
+	$('#newProjectSubmitButton').click(function(e) {
 		console.log('clicked');
 		var title = $('#new-project-form #title').val();
 		var image_url = $('#new-project-form #image_url').val();
 		var date = $('#new-project-form #date').val();
 		var summary = $('#new-project-form #summary').val();
 		var json = {
-			'project_title': title,
-			'image_url': image_url,
+			'title': title,
+			'image': image_url,
 			'date':  date,
 			'summary': summary
 		};
